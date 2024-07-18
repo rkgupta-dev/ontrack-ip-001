@@ -1,70 +1,52 @@
 <template>
   <div>
-    <form id="submitForm">
-      <div>
-        <label>Name:</label>
-        <input type="text" id="name" placeholder="Name" >
-      </div>
-      <div>
-        <label>Phone Number:</label>
-        <input type="tel" id="phone" placeholder="Phone" >
-      </div>
-      <button @click="showAlert" type="submit">Submit</button>
-    </form>
-    
+    <v-card max-width="400" class="mx-auto">
+      <v-container>
+        <div class="text-right">
+          <v-btn @click="showInfo = true" icon
+            ><v-icon>mdi-information</v-icon></v-btn
+          >
+        </div>
+        <v-form id="submitForm">
+          <div>
+            <v-text-field label="Name" />
+          </div>
+          <div>
+            <v-text-field label="Password" />
+          </div>
+          <v-btn @click="showAlert" type="submit">Submit</v-btn>
+        </v-form>
+      </v-container>
+    </v-card>
+    <v-bottom-sheet v-model="showInfo">
+      <v-card>
+        <v-container>
+          <h1>Info</h1>
+          <div>
+            The bottom sheet is a modified v-dialog that slides from the bottom
+            of the screen, similar to a v-bottom-navigation. Whereas a bottom
+            navigation component is for buttons and specific application level
+            actions, a bottom sheet can contain anything.
+          </div>
+        </v-container>
+      </v-card>
+    </v-bottom-sheet>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ModelList',
-  
+  name: "SimpleForm",
+  data() {
+    return {
+      showInfo: false,
+    };
+  },
+
   methods: {
-        showAlert() {
-      alert('Form submitted successfully!');
-  }
-}
-
-}
-
+    showAlert() {
+      alert("Form submitted successfully!");
+    },
+  },
+};
 </script>
-
-<style scoped>
-form {
-  max-width: 400px;
-  margin: 0 auto;
-  padding: 1em;
-  border: 2px solid red;
-  background-color: #8b5b5b;
-  border-radius: 1em;
-}
-div {
-  margin-bottom: 1em;
-}
-label {
-  margin-bottom: .5em;
-  color: white;
-  display: block;
-  /* text-align: left; */
-}
-input {
-  border: 1px solid #CCCCCC;
-  padding: .5em;
-  font-size: 1em;
-  width: 100%;
-  box-sizing: border-box;
-}
-button {
-  padding: 0.7em;
-  color: #fff;
-  background-color: red;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-}
-button:hover {
-  color: white;
-  background-color: green;
-  /* text-transform: uppercase; */
-}
-</style>
