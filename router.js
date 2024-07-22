@@ -20,6 +20,21 @@ export default new Router({
           component: () => import("./src/components/FormApp.vue"),
           name: "Form App page", // Updated name to be unique
         },
+        {
+          path: "bikes",
+          component: () => import("./src/components/ModelList.vue"),
+          name: "Bike List page", // Updated name to be unique
+        },
+        {
+          path: "about",
+          component: () => import("./src/components/AboutPage.vue"),
+          name: "About page", // Updated name to be unique
+        },
+        {
+          path: "contact",
+          component: () => import("./src/components/ContactPage.vue"),
+          name: "Contact page", // Updated name to be unique
+        },
       ],
     },
   ],

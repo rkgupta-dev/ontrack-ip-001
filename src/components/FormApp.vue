@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card max-width="400" class="mx-auto">
+    <v-card max-width="600" class="mx-auto">
       <v-container>
         <div class="text-right">
           <v-btn @click="showInfo = true" icon
@@ -12,9 +12,13 @@
             <v-text-field label="Name" />
           </div>
           <div>
+            <v-text-field label="Email" />
+          </div>
+          <div>
             <v-text-field label="Password" />
           </div>
           <v-btn @click="showAlert" type="submit">Submit</v-btn>
+          <!-- <v-icon right> mdi-account-circle-outline </v-icon> -->
         </v-form>
       </v-container>
     </v-card>

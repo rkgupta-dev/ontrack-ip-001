@@ -1,107 +1,100 @@
 <template>
-  <div>
-    <div>
-      <label>Home</label>
-      <p>Loaded 04 of 04 entries</p>
-    </div>
-    <div class="mainbox">
-      <div class="box" v-for="(bike, index) in bikes" :key="index">
-        <img :src="bike.image" alt="" />
-        <h3>{{ bike.brand }}</h3>
-        <h4>Price: ${{ bike.price }}</h4>
-        <h6 border="1px">Price for first time booking</h6>
-        <button>Rent Now</button>
+  <div class="bike">
+    <v-row no-gutters>
+      <div class="box" v-for="(bikes, index) in bikes" :key="index">
+        <v-card :loading="loading" class="mx-auto my-12" max-width="290">
+          <template slot="progress">
+            <v-progress-linear
+              color="deep-purple"
+              height="10"
+              indeterminate
+            ></v-progress-linear>
+          </template>
+
+          <v-img height="210" :src="bikes.image"></v-img>
+
+          <v-card-title>{{ bikes.name }}</v-card-title>
+
+          <v-card-text>
+            <v-row align="center" class="mx-0">
+              <v-rating
+                :value="Number(bikes.rating)"
+                color="amber"
+                dense
+                half-increments
+                readonly
+                size="14"
+              ></v-rating>
+
+              <div class="green--text ms-4">{{ bikes.rating }} ({{bikes.totalRatings}})</div>
+            </v-row>
+            <br />
+            <div class="bg-primary blue--text">
+              Price for first time booking
+            </div>
+
+            <div class="my-3 text-subtitle-1 black--text">
+              ₹ {{ bikes.price }}
+            </div>
+
+            <v-img
+              height="auto"
+              width="100px"
+              src="https://book.on-track.in/img/zero-deposit.bc895812.svg"
+            ></v-img>
+
+            <div class="green--text"><br />Summer Days Sale</div>
+          </v-card-text>
+        </v-card>
       </div>
-    </div>
+    </v-row>
   </div>
 </template>
 
 <script>
 export default {
   name: "ModelList",
-
   data() {
     return {
       bikes: [
         {
-          brand: "Honda",
-          model: "SP Shine",
-          color: "Red",
-          price: 8500,
-          image:
-            "https://on-track-jarvis.s3.ap-south-1.amazonaws.com/monthly-rental/rent-hero-hf-100-min.webp",
+          name: "Hero Duet",
+          rating: 4.7,
+          totalRatings: 556,
+          price: "4199/month",
+          image: "https://on-track-jarvis.s3.ap-south-1.amazonaws.com/monthly-rental/rent-hero-duet-bangalore-min.webp",
         },
         {
-          brand: "Bajaj",
-          model: "Pulsar 150",
-          color: "Black",
-          price: 9500,
-          image:
-            "https://on-track-jarvis.s3.ap-south-1.amazonaws.com/monthly-rental/rent-hero-hf-100-min.webp",
+          name: "Honda Shine 2024",
+          rating: 4.3,
+          totalRatings: 756,
+          price: "5399/month",
+          image: "https://on-track-jarvis.s3.ap-south-1.amazonaws.com/107a242755abc802ef75751057ca0822",
         },
         {
-          brand: "Hero",
-          model: "HF 100",
-          color: "Blue",
-          price: 5500,
-          image:
-            "https://on-track-jarvis.s3.ap-south-1.amazonaws.com/monthly-rental/rent-hero-hf-100-min.webp",
+          name: "Honda Dio",
+          rating: 4.1,
+          totalRatings: 256,
+          price: "4099/month",
+          image: "https://on-track-jarvis.s3.ap-south-1.amazonaws.com/monthly-rental/rent-honda-dio-bangalore-min.webp",
         },
         {
-          brand: "Hero",
-          model: "HF 100",
-          color: "Blue",
-          price: 5500,
-          image:
-            "https://on-track-jarvis.s3.ap-south-1.amazonaws.com/monthly-rental/rent-hero-hf-100-min.webp",
+          name: "TVS Sports",
+          rating: 2.2,
+          totalRatings: 456,
+          price: "3799/month",
+          image: "https://on-track-jarvis.s3.ap-south-1.amazonaws.com/monthly-rental/rent-TVS-sport-bangalore-min.webp",
         },
       ],
     };
   },
+  methods: {
+    selectBike(bike) {
+      alert(`Selected Bike: ${bike.name}`);
+    },
+  },
 };
 </script>
 
-<style scoped>
-label {
-  padding-right: 75rem;
-  color: blue;
-}
-
-p {
-  font-size: 12px;
-  padding-right: 70rem;
-}
-
-.box img {
-  height: 200px;
-}
-
-.box {
-  box-sizing: auto;
-  height: 420px;
-  width: 310px;
-  border: 2px solid black;
-  background: rgb(240, 250, 250);
-  margin-left: -2px;
-}
-
-.mainbox {
-  display: inline-flex;
-  padding: 2rem;
-}
-
-button {
-  color: white;
-  background-color: green;
-  cursor: pointer;
-}
-
-.box:hover {
-  cursor: pointer;
-  border-radius: 15px;
-}
-
-.List {
-  color: red;
-}
+<style>
 </style>
